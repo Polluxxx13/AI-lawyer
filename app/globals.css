@@ -1,0 +1,45 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root { color-scheme: dark; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  @apply bg-night text-ivory font-sans antialiased;
+  background-image:
+    radial-gradient(1200px 600px at 80% -10%, rgba(201, 162, 75, 0.07), transparent 60%),
+    radial-gradient(900px 500px at -10% 30%, rgba(40, 62, 110, 0.35), transparent 60%);
+  background-attachment: fixed;
+}
+
+::selection { background: rgba(201, 162, 75, 0.35); }
+
+@layer components {
+  .container-x { @apply mx-auto w-full max-w-6xl px-5 sm:px-8; }
+  .section { @apply py-24 sm:py-36; }
+  .eyebrow { @apply text-xs font-medium uppercase tracking-[0.28em] text-gold; }
+  .h2 { @apply font-serif text-3xl leading-tight text-ivory sm:text-5xl; }
+  .btn-gold {
+    @apply inline-flex items-center justify-center gap-2 rounded-full bg-gold px-7 py-3.5 text-sm font-semibold text-night
+      transition duration-300 hover:bg-gold-light hover:shadow-[0_10px_40px_-10px_rgba(201,162,75,0.7)]
+      focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold;
+  }
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 rounded-full border border-white/15 px-6 py-3 text-sm text-ivory
+      transition duration-300 hover:border-gold/60 hover:text-gold;
+  }
+  .card {
+    @apply rounded-2xl border border-white/10 bg-night-700/60 p-7 backdrop-blur transition duration-500
+      hover:-translate-y-2 hover:border-gold/40 hover:shadow-[0_24px_60px_-20px_rgba(0,0,0,0.8),0_0_0_1px_rgba(201,162,75,0.15)];
+  }
+}
+
+.scroll-thin::-webkit-scrollbar { width: 6px; }
+.scroll-thin::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.12); border-radius: 9999px; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { transition-duration: 0.01ms !important; }
+}
